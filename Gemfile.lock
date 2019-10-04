@@ -5,6 +5,7 @@ GEM
       public_suffix (>= 2.0.2, < 4.0)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
+    holiday_jp (0.7.1)
     multipart-post (2.1.1)
     octokit (4.14.0)
       sawyer (~> 0.8.0, >= 0.5.3)
@@ -17,6 +18,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  holiday_jp
   octokit (~> 4.0)
 
 BUNDLED WITH

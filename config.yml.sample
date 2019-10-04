@@ -1,0 +1,6 @@
+repository_name: 'keiichi.omosu/issue_reporter'
+milestone_name: 'マイルストーン名'
+token: 'access_token'
+started_on: '2000-01-01'
+default_throughput: 20
+optional_tag: 'option'
