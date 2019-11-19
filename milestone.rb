@@ -2,6 +2,7 @@ require 'octokit'
 require './schedule'
 require './issue_calculator'
 require './config'
+require './string_ajust'
 
 def find_milestone(client, milestone_name)
   client.list_milestones(config.repository_name).find { |m| m.title == config.milestone_name }
@@ -12,7 +13,7 @@ def milestone_issues(client, milestone_number, state)
 end
 
 def put_line(title, value)
-  printf("%-20s: %s\n",title, value)
+  printf("%s : %s\n", title.mb_ljust(20), value)
 end
 
 def config
