@@ -4,3 +4,5 @@ token: 'access_token'
 started_on: '2000-01-01'
 default_throughput: 20
 optional_tag: 'option'
+work_start_time: 9
+work_end_time: 18
