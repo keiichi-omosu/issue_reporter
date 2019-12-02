@@ -4,12 +4,14 @@ require './issue_calculator'
 require './config'
 require './string_ajust'
 
+GITHUB_PER_PAGE_NUM = 100
+
 def find_milestone(client, milestone_name)
   client.list_milestones(config.repository_name).find { |m| m.title == config.milestone_name }
 end
 
 def milestone_issues(client, milestone_number, state)
-  client.list_issues(config.repository_name, milestone: milestone_number, state: state)
+  client.list_issues(config.repository_name, milestone: milestone_number, state: state, per_page: GITHUB_PER_PAGE_NUM)
 end
 
 def put_line(title, value)
