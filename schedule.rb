@@ -4,9 +4,6 @@ require 'holiday_jp'
 class Schedule
   attr_reader :started_on, :due_on, :today
 
-  WORK_START_TIME = 9
-  WORK_END_TIME = 18
-
   def initialize(due_on)
     @started_on = Date.parse(Config.instance.started_on)
     @due_on = due_on
@@ -44,12 +41,12 @@ class Schedule
   # 本日の時刻経過度合
   #
   def time_elapsed_rate_today
-    if Time.now.hour <= WORK_START_TIME
+    if Time.now.hour <= Config.instance.work_start_time
       1
-    elsif Time.now.hour >= WORK_END_TIME
+    elsif Time.now.hour >= Config.instance.work_end_time
       0
     else
-      (Time.now.hour - WORK_START_TIME).fdiv(WORK_END_TIME - WORK_START_TIME).round(1)
+      (Time.now.hour - Config.instance.work_start_time).fdiv(Config.instance.work_end_time - Config.instance.work_start_time).round(1)
     end
   end
 end
