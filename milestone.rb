@@ -6,6 +6,8 @@ require './string_ajust'
 
 GITHUB_PER_PAGE_NUM = 100
 
+Config.setup ARGV[0]
+
 def find_milestone(client, milestone_name)
   client.list_milestones(config.repository_name).find { |m| m.title == config.milestone_name }
 end

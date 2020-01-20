@@ -23,3 +23,9 @@ exec
 ```
 bundle exec ruby milestone.rb
 ```
+
+specific file exec
+
+```
+bundle exec ruby milestone.rb milestone.yml
+```
