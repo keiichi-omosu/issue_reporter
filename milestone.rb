@@ -32,6 +32,7 @@ s = Schedule.new(milestone.due_on.to_date)
 
 issues_calc        = IssueCalculator.new(client, milestone_issues(client, milestone.number, 'open'))
 closed_issues_calc = IssueCalculator.new(client, milestone_issues(client, milestone.number, 'closed'))
+total_point =  issues_calc.point + closed_issues_calc.point
 
 puts('################################################')
 put_line('マイルストーン', config.milestone_name)
@@ -44,5 +45,7 @@ put_line('残ポイント', issues_calc.point)
 put_line('終了ポイント', closed_issues_calc.point)
 put_line('現在スループット', "#{closed_issues_calc.throughput(s.worked_days)} / 日")
 put_line('初期想定スループット', "#{config.default_throughput} / 日")
+put_line('初期必要スループット', "#{total_point.quo(s.total_days).round}/ 日")
+put_line('残必要スループット', "#{issues_calc.point.quo(s.remaining_days).round}/ 日")
 put_line('リームーポイント', "#{(issues_calc.point - (s.remaining_days * closed_issues_calc.throughput(s.worked_days))).round(1)}")
 puts('################################################')
