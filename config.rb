@@ -4,13 +4,19 @@ class Config
   attr_reader :repository_name, :milestone_name, :token, :started_on, :default_throughput, :work_start_time, :work_end_time
 
   class << self
+
+    def setup(path = 'config.yml')
+      @path = path
+      @instance = new(@path)
+    end
+
     def instance
-      @instance ||= new
+      @instance ||= setup
     end
   end
 
-  def initialize
-    config = YAML.load_file('config.yml')
+  def initialize(path)
+    config = YAML.load_file(path)
 
     @repository_name = config['repository_name']
     @milestone_name = config['milestone_name']
