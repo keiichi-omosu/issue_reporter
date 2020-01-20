@@ -20,8 +20,7 @@ class IssueCalculator
   def sum_point
     points = []
     @issues.each do |issue|
-      labels = @client.labels_for_issue(Config.instance.repository_name, issue.number)
-      labels.each do |label|
+      (issue['labels'] || []).each do |label|
         if label.name =~ /^[0-9]+$/
           points << label.name.to_i
         end
